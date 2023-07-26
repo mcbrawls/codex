@@ -1,0 +1,7 @@
+{
+	"schemaVersion": 1,
+	"id": "codex",
+	"version": "${version}",
+	"name": "Codex",
+	"environment": "*"
+}
