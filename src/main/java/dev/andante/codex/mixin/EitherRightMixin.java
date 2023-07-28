@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Mixin(targets = { "com.mojang.datafixers.util.Either$Right" })
 public class EitherRightMixin<L, R> {
-    @Redirect(method = "right", at = @At(value = "INVOKE", target = "Ljava/util/Optional;of(Ljava/lang/Object;)Ljava/util/Optional;"))
+    @Redirect(method = "right", at = @At(value = "INVOKE", target = "Ljava/util/Optional;of(Ljava/lang/Object;)Ljava/util/Optional;"), remap = false)
     private Optional<R> onLeftOf(R value) {
         return Optional.ofNullable(value);
     }
