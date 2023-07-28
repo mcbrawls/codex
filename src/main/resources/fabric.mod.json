@@ -3,5 +3,8 @@
 	"id": "codex",
 	"version": "${version}",
 	"name": "Codex",
-	"environment": "*"
+	"environment": "*",
+    "mixins": [
+        "codex.mixins.json"
+    ]
 }
