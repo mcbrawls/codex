@@ -58,7 +58,6 @@ publishing {
     def ENV = System.getenv()
     repositories.maven {
         url = "https://maven.andante.dev/releases/"
-        allowInsecureProtocol = true
         if (ENV.MAVEN_USERNAME) {
             credentials {
                 username ENV.MAVEN_USERNAME
