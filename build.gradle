@@ -1,7 +1,7 @@
 //file:noinspection all
 
 plugins {
-    id 'fabric-loom' version '1.3-SNAPSHOT'
+    id 'fabric-loom' version '1.4-SNAPSHOT'
     id 'maven-publish'
     id "org.jetbrains.kotlin.jvm" version "1.9.+"
 }
@@ -58,7 +58,7 @@ publishing {
     def ENV = System.getenv()
     if (ENV.MAVEN_URL) {
         repositories.maven {
-            url ENV.MAVEN_URL
+            url = "https://maven.andante.dev/releases/"
             allowInsecureProtocol = true
             if (ENV.MAVEN_USERNAME) {
                 credentials {

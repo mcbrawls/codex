@@ -6,5 +6,9 @@
 	"environment": "*",
     "mixins": [
         "codex.mixins.json"
-    ]
+    ],
+    "depends": {
+        "minecraft": ">=1.20",
+        "fabric-language-kotlin": "*"
+    }
 }
