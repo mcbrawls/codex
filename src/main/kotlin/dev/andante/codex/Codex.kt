@@ -1,11 +1,10 @@
 package dev.andante.codex
 
-import com.google.gson.JsonElement
 import com.mojang.datafixers.util.Pair
 import com.mojang.serialization.Codec
 import com.mojang.serialization.Decoder
+import com.mojang.serialization.DynamicOps
 import com.mojang.serialization.Encoder
-import com.mojang.serialization.JsonOps
 import com.mojang.serialization.MapCodec
 import java.util.Optional
 
@@ -27,20 +26,20 @@ fun <A : Any?> MapCodec<A>.functionally(): MapCodec<() -> A> {
 }
 
 /**
- * Encodes to a JSON format.
+ * Encodes to a dynamic ops format.
  */
-fun <A> Encoder<A>.encodeJson(input: A): JsonElement? {
-    return encodeStart(JsonOps.INSTANCE, input)
+fun <A, T> Encoder<A>.encodeQuick(ops: DynamicOps<T>, input: A): T? {
+    return encodeStart(ops, input)
         .result()
         .orElse(null)
 }
 
 /**
- * Decodes from a JSON format.
+ * Decodes from a dynamic ops format.
  */
-fun <A> Decoder<A>.decodeJson(input: JsonElement): A? {
-    return decode(JsonOps.INSTANCE, input)
+fun <A, T> Decoder<A>.decodeQuick(ops: DynamicOps<T>, input: T): A? {
+    return decode(ops, input)
         .result()
-        .map(Pair<A, JsonElement>::getFirst)
+        .map(Pair<A, T>::getFirst)
         .orElse(null)
 }
