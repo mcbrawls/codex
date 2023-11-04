@@ -56,15 +56,13 @@ publishing {
     }
 
     def ENV = System.getenv()
-    if (ENV.MAVEN_URL) {
-        repositories.maven {
-            url = "https://maven.andante.dev/releases/"
-            allowInsecureProtocol = true
-            if (ENV.MAVEN_USERNAME) {
-                credentials {
-                    username ENV.MAVEN_USERNAME
-                    password ENV.MAVEN_PASSWORD
-                }
+    repositories.maven {
+        url = "https://maven.andante.dev/releases/"
+        allowInsecureProtocol = true
+        if (ENV.MAVEN_USERNAME) {
+            credentials {
+                username ENV.MAVEN_USERNAME
+                password ENV.MAVEN_PASSWORD
             }
         }
     }
