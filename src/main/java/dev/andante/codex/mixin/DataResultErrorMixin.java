@@ -1,12 +1,13 @@
 package dev.andante.codex.mixin;
 
+import com.mojang.serialization.DataResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.Optional;
 
-@Mixin(targets = { "com.mojang.serialization.DataResult$Error" })
+@Mixin(DataResult.Error.class)
 public class DataResultErrorMixin<R> {
     @Redirect(method = "error", at = @At(value = "INVOKE", target = "Ljava/util/Optional;of(Ljava/lang/Object;)Ljava/util/Optional;"), remap = false)
     private Optional<R> onErrorOf(R value) {
