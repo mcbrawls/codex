@@ -1,6 +1,5 @@
 package dev.andante.codex
 
-import com.mojang.datafixers.util.Pair
 import com.mojang.serialization.Codec
 import com.mojang.serialization.Decoder
 import com.mojang.serialization.DynamicOps
@@ -38,8 +37,7 @@ fun <A, T> Encoder<A>.encodeQuick(ops: DynamicOps<T>, input: A): T? {
  * Decodes from a dynamic ops format.
  */
 fun <A, T> Decoder<A>.decodeQuick(ops: DynamicOps<T>, input: T): A? {
-    return decode(ops, input)
+    return parse(ops, input)
         .result()
-        .map(Pair<A, T>::getFirst)
         .orElse(null)
 }
