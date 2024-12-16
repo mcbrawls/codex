@@ -1,14 +1,23 @@
 {
-	"schemaVersion": 1,
-	"id": "codex",
-	"version": "${version}",
-	"name": "Codex",
-	"environment": "*",
+    "schemaVersion": 1,
+    "id": "codex",
+    "version": "${version}",
+    "name": "Codex",
+    "description": "A library extending codec capabilities.",
+    "authors": [
+        "Andante"
+    ],
+    "contact": {
+        "sources": "https://github.com/mcbrawls/codex"
+    },
+    "license": "MIT",
+    "icon": "assets/codex/icon.png",
+    "environment": "*",
     "mixins": [
         "codex.mixins.json"
     ],
     "depends": {
-        "minecraft": ">=1.20",
+        "fabricloader": "*",
         "fabric-language-kotlin": "*"
     }
 }
