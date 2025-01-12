@@ -23,4 +23,10 @@ object ExtraCodecs {
     )
 
     val DURATION: Codec<Duration> = Codec.STRING.xmap(Duration::parse, Duration::toString)
+
+    fun <F, S> nativePair(first: Codec<F>, second: Codec<S>): Codec<Pair<F, S>> = Codec.pair(first, second)
+        .xmap(
+            { it.first to it.second },
+            { com.mojang.datafixers.util.Pair.of(it.first, it.second) }
+        )
 }
